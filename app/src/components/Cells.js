@@ -1,11 +1,11 @@
 import React from 'react';
-import { Layer } from 'react-konva';
+import { Group } from 'react-konva';
 import Cell from './Cell';
 import { boardToPixel, playerColor } from '../utils/drawUtils';
 
 function Cells(props) {
   return (
-    <Layer x={props.x} y={props.y}>
+    <Group>
       { props.cells.map((cell) =>
         <Cell key={cell.idx}
           x={boardToPixel(cell.x)}
@@ -14,7 +14,7 @@ function Cells(props) {
           onClick={() => props.onCellClicked(cell.idx) }
           />
       )}
-    </Layer>
+    </Group>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layer, Line } from 'react-konva';
+import { Group, Line } from 'react-konva';
 import { BOARD_SIZE } from '../data/Constants';
 import { boardToPixel } from '../utils/drawUtils';
 
@@ -28,7 +28,7 @@ const HELPER_LINE_POINTS = (function() {
 
 function HelperLines(props) {
   return (
-    <Layer x={props.x} y={props.y}>
+    <Group>
       {HELPER_LINE_POINTS.map((points, i) => (
         <Line key={i}
           points={points}
@@ -36,7 +36,7 @@ function HelperLines(props) {
           strokeWidth={1}
           />
       ))}
-    </Layer>
+    </Group>
   );
 }
 

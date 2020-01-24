@@ -1,10 +1,10 @@
 import React from 'react';
-import { Layer, Line } from 'react-konva';
+import { Group, Line } from 'react-konva';
 import { boardToPixel, playerColor } from '../utils/drawUtils'
 
 function Walls(props) {
   return (
-    <Layer x={props.x} y={props.y}>
+    <Group>
       {props.walls.map((wall, i) =>
         <Line key={i}
           points={[
@@ -16,7 +16,7 @@ function Walls(props) {
           stroke={playerColor(wall.player)}
           />
       )}
-    </Layer>
+    </Group>
   );
 }
 

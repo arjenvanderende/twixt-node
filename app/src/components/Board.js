@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stage } from 'react-konva';
+import { Stage, Layer } from 'react-konva';
 import BoundaryLines from './BoundaryLines';
 import Cells from './Cells';
 import ColumnLabels from './ColumnLabels';
@@ -82,12 +82,21 @@ class Board extends React.Component {
 
     return (
       <Stage width={CELL_SIZE*BOARD_SIZE+CELL_SIZE} height={CELL_SIZE*BOARD_SIZE+CELL_SIZE}>
-        <ColumnLabels x={CELL_SIZE+CELL_RADIUS} y={CELL_RADIUS} />
-        <RowLabels x={CELL_RADIUS} y={CELL_SIZE+CELL_RADIUS} />
-        <HelperLines x={CELL_SIZE} y={CELL_SIZE} />
-        <BoundaryLines x={CELL_SIZE} y={CELL_SIZE} />
-        <Walls x={CELL_SIZE} y={CELL_SIZE} walls={this.state.walls} />
-        <Cells x={CELL_SIZE} y={CELL_SIZE} cells={cells} onCellClicked={(idx) => this.handleCellClicked(idx)} />
+        <Layer x={CELL_RADIUS} y={CELL_RADIUS}>
+          <ColumnLabels />
+          <RowLabels />
+        </Layer>
+        <Layer x={CELL_SIZE} y={CELL_SIZE}>
+          <HelperLines />
+          <BoundaryLines />
+          <Walls
+            walls={this.state.walls}
+            />
+          <Cells
+            cells={cells}
+            onCellClicked={(idx) => this.handleCellClicked(idx)}
+            />
+        </Layer>
       </Stage>
     );
   }
