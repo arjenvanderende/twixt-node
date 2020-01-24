@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layer, Line } from 'react-konva';
 import { BOARD_SIZE } from '../data/Constants';
-import { boardToPixel } from '../utils/layoutUtils';
+import { boardToPixel } from '../utils/drawUtils';
 
 const HELPER_LINE_POINTS = (function() {
   const LAST_CELL = BOARD_SIZE - 1;
